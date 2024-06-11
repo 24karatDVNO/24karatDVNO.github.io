@@ -1,10 +1,105 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Page Title</title>
+		<title>FE1 Battle Simulator</title>
+		<script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+		<script>
+			function changeClass1() {
+				var fs = require('fs');
+				var test = require('./Scripts/FE1Classes.json');
+
+				document.getElementById('clmhp1').value = test.Lord.stats[0];
+			}
+		</script>
 	</head>
 	<body>
-		<h1>This is a Heading</h1>
-		<p>This is a paragraph.</p>
+		<div id="myData"></div>
+		<script defer="defer">
+			async function jsontest() {
+				const response = await fetch("data.json");
+				const data = await response.json();
+
+				let mainContainer = document.getElementById("myData");
+					for (let i = 0; i < data.length; i++) {
+						let div = document.createElement("div");
+						div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+						mainContainer.appendChild(div);
+					}
+
+				}
+		</script>
+		<h1>Fire Emblem: Shadow Dragon and the Blade of Light</h1>
+		<h1>Battle Simulator</h1>
+		<select onchange="document.getElementById('char1pic').src = this.value" name="char1" id="char1">
+			<option value="">Please select</option>
+			<option value="Portraits/Marth.png">Marth</option>
+			<option value="Portraits/Caeda.png">Caeda</option>
+			<option value="Portraits/Jagen.png">Jagen</option>
+			<option value="Portraits/Cain.png">Cain</option>
+			<option value="Portraits/Abel.png">Abel</option>
+			<option value="Portraits/Draug.png">Draug</option>
+			<option value="Portraits/Gordin.png">Gordin</option>
+			<option value="Portraits/Wrys.png">Wrys</option>
+			<option value="Portraits/Ogma.png">Ogma</option>
+			<option value="Portraits/Barst.png">Barst</option>
+			<option value="Portraits/Bord.png">Bord</option>
+			<option value="Portraits/Bord.png">Cord</option>
+			<option value="Portraits/Castor.png">Castor</option>
+
+			<option value="Portraits/Gordin.png">Tomas</option>
+		</select>
+		<br>
+		<img id="char1pic" height="96px">
+		<div>
+			<label for="class1">Class: </label>
+			<select onchange="jsontest()" name="class1" id="class1">
+				<option value="">Please select</option>
+				<option value="Lord">Lord</option>
+				<option value="Mercenary">Mercenary</option>
+				<option value="Hero">Hero</option>
+				<option value="Thief">Thief</option>
+				<option value="Freelancer">Freelancer</option>
+				<option value="Fighter">Fighter</option>
+				<option value="Pirate">Pirate</option>
+				<option value="Archer">Archer</option>
+				<option value="Sniper">Sniper</option>
+				<option value="Hunter">Hunter</option>
+				<option value="Mage">Mage</option>
+				<option value="Curate">Curate</option>
+				<option value="Bishop">Bishop</option>
+				<option value="Knight">Knight</option>
+				<option value="General">General</option>
+				<option value="Cavalier">Cavalier</option>
+				<option value="Paladin">Paladin</option>
+				<option value="Horseman">Horseman</option>
+				<option value="Pegasus Knight">Pegasus Knight</option>
+				<option value="Wyvern Knight">Wyvern Knight</option>
+				<option value="Ballistician">Ballistician</option>
+				<option value="Manakete">Manakete</option>
+			</select>
+			<br>
+			<label for="clmhp1">Max HP: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clmhp1"></input><br>
+			<label for="clstr1">Str: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clstr1"></input><br>
+			<label for="clskl1">Skl: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clskl1"></input><br>
+			<label for="clwlv1">Wlv: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clwlv1"></input><br>
+			<label for="clspd1">Spd: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clspd1"></input><br>
+			<label for="cllck1">Lck: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="cllck1"></input><br>
+			<label for="cldef1">Def: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="cldef1"></input><br>
+			<label for="clres1">Res: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clres1"></input><br>
+			<label for="clmov1">Mov: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clmov1"></input><br>
+			<label for="clexp1">EXP: </label>
+			<input type="number" disabled="true" defaultValue="0" style="width: 30px;" id="clexp1"></input><br>
+			<label for="clwpn1">Weapon Types: </label>
+			<input type="text" disabled="true" defaultValue="0" style="width: 125px;" id="clwpn1"></input>
+		</div>
 	</body>
 </html>
